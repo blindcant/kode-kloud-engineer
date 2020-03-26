@@ -10,7 +10,7 @@ ssh steve@stapp02
 ssh banner@stapp03
 ssh peter@stdb01
 
-# Check O/S
+# Check O/S, it was CentOS 7
 cat /etc/*release*
 
 # See current
@@ -23,8 +23,7 @@ systemctl list-units --type=target
 # Change to GUI
 sudo systemctl set-default graphical.target
 
-
-# Check it was change
+# Check it was changed
 systemctl get-default
 	graphical.target # GUI
 ```
