@@ -1,5 +1,9 @@
 ```bash
-# ssh from thor jumpbox as the correct user
+# Check the architecture map - https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
+
+# Connect to thor jumpbox
+
+# Connect to application servers, logins at https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
 ssh steve@stapp2
 
 # Check current Linux version, it was CentOS 7.6
