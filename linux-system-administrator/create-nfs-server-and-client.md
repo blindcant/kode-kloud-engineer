@@ -3,7 +3,7 @@
 
 # Connect to thor jumpbox
 
-# Connect to storage server, logins at https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
+# Connect to storage server, logins at https://kodekloudhub.github.io/kodekloud-engineer/docs/projects/nautilus
 ssh natasha@ststor01
 
 # Get root access
