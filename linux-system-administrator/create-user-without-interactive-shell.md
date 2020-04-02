@@ -6,7 +6,7 @@
 # Connect to application servers, logins at https://kodekloudhub.github.io/kodekloud-engineer/docs/projects/nautilus
 ssh banner@stapp03
 
-# Check current Linux version, it was RHEL 7
+# Check current Linux version, it was CentOS 7.6
 cat /etc/*release*
 
 # Switch to root
