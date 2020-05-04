@@ -48,7 +48,7 @@ systemctl restart dbus
 systemctl restart firewalld 
 
 # Check currently listening applications
-ss -lntp # httpd = 3002 & nginx = 8098
+ss -lntp # httpd = 8085 & nginx = 8096
 
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7
 systemctl status firewalld # Should see active
@@ -64,11 +64,13 @@ ip -c -h a
 
 # Set default zone to public for the network interface
 firewall-cmd --permanent --change-interface=eth0 --zone=public
+systemctl restart firewalld
 firewall-cmd --get-default-zone # Should see public
 firewall-cmd --get-active-zones # Should see public and eth0
 
 # Add a new port/protocol permanently
 firewall-cmd --permanent --zone=public --add-port=8098/tcp 
+systemctl restart firewalld
 firewall-cmd --list-ports # should see 8098/tcp
 
 # Add a rich rule - https://serverfault.com/a/684603
@@ -76,30 +78,30 @@ firewall-cmd --permanent --zone=public --add-rich-rule='
   rule family="ipv4"
   source address="172.16.238.14/16"
   port protocol="tcp"
-	port="3002"
+	port="8085"
 	accept'
 
 firewall-cmd --permanent --zone=public --add-rich-rule='
   rule family="ipv4"
   source address="0.0.0.0"
   port protocol="tcp"
-	port="3002"
+	port="8085"
 	reject'
 
-firewall-cmd --list-all # should see both rich rules for 3002
+firewall-cmd --list-all # should see both rich rules for 8085
 
 # Check connection internally
-curl localhost:3002 # OK, default httpd page
-curl localhost:8098 # OK, nginx 403
+curl localhost:8085 # OK, default httpd
+curl localhost:8096 # OK, nginx 403 but this is right
 
 # Check connection externally - exit out to thor
-curl stapp01:3002 # Blocked, no route to host
-curl stapp02:3002 # Blocked, no route to host
-curl stapp03:3002 # Blocked, no route to host
+curl stapp01:8085 # Blocked, no route to host
+curl stapp02:8085 # Blocked, no route to host
+curl stapp03:8085 # Blocked, no route to host
 	
-curl stapp01:8098 # OK, nginx 403
-curl stapp02:8098 # OK, nginx 403
-curl stapp03:8098 # OK, nginx 403
+curl stapp01:8096 # OK, nginx 403 but this is right
+curl stapp02:8096 # OK, nginx 403 but this is right
+curl stapp03:8096 # OK, nginx 403 but this is right
 
 # Check connection externally
 ssh loki@stlb01
