@@ -18,6 +18,10 @@ cat /etc/*release*
 # Switch to root
 sudo -s
 
+# Create /var/www as it didn't exist
+mkdir -p /var/www
+chmod 755 /var/www
+
 # Create the user
 useradd --home-dir /var/www/anita --uid 1675 anita
 ```
