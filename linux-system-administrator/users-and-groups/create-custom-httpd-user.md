@@ -24,4 +24,7 @@ chmod 755 /var/www
 
 # Create the user
 useradd --home-dir /var/www/anita --uid 1675 anita
+
+# Check
+cat /etc/passwd
 ```
