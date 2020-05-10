@@ -1,6 +1,5 @@
 Nautilus application development team recently finished beta version of one of their java based application. They are planning to deploy the same on one of the app server in Stratos DC. After having an internal team meeting they have decided to use tomcat application server. Based on the requirements mentioned below complete the task:
 
-
 a. Install tomcat server on App Server 2 using yum.
 
 b. Configure it to run on port 8089.
@@ -50,5 +49,5 @@ mv ~steve/ROOT.war /usr/share/tomcat/webapps
 chown tomcat: /usr/share/tomcat/webapps/ROOT.war
 
 # Test webapp
-curl localhost@8089 # See the SampleWebApp page.
+curl -v localhost:8089 # See the SampleWebApp page.
 ```
