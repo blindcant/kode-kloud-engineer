@@ -23,7 +23,8 @@ java -version
 yum install tomcat
 
 #  Change port - https://stackoverflow.com/questions/18415578/how-to-change-tomcat-port-number
-8089
+vi /etc/tomcat/conf/server.xml
+  # Added in <Connector port="8089"
 
 # Start and test
 systemctl start tomcat
