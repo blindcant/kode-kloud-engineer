@@ -1,4 +1,7 @@
+There is a critical issue going on with Nautilus application in Stratos DC. Production support team has identified that application is not able to connect to database. After digging into the issue team found that mariadb service is down on database server.
 
+
+Look into the issue and fix the same.
 
 ```bash
 # Check the architecture map - https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
