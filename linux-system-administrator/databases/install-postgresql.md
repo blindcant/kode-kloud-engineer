@@ -1,3 +1,16 @@
+As per details shared by Nautilus application development team. they are planning to deploy one newly developed application on Nautilus infra in Stratos DC. Application uses PostgreSQL database. So as a pre-requisite we need to setup PostgreSQL database server as per requirements shared below:
+
+
+a. Install and configure PostgreSQL database on Nautilus database server.
+
+b. Create a database user kodekloud_joy and set its password to B4zNgHA7Ya.
+
+c. Create a database kodekloud_db10 and grant full permissions to user kodekloud_joy on this database.
+
+d. Make appropriate settings to allow all local clients (local socket connections) to connect to the kodekloud_db10 database through kodekloud_joy user using md5 encrypted password for authentication.
+
+e. At the end its good to test the db connection using these new credentials from root user or server's sudo user.
+
 ```bash
 # Check the architecture map - https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
 
@@ -13,7 +26,7 @@ cat /etc/*release*
 sudo -s
 
 # CentOS 7 has 9.2.24 - https://www.postgresql.org/docs/9.2/
-yum install postgres-server
+yum install postgresql-server
 
 # https://www.postgresql.org/docs/9.2/creating-cluster.html
 sudo -iu postgres
@@ -26,10 +39,10 @@ pg_ctl -D /var/lib/pgsql/data -l postgres_log start
 psql
 
 # https://www.postgresql.org/docs/9.2/sql-createrole.html
-CREATE USER kodekloud_roy WITH PASSWORD 'LQfKeWWxWD';
+CREATE USER kodekloud_joy WITH PASSWORD 'B4zNgHA7Ya';
 
 # https://www.postgresql.org/docs/9.2/sql-createdatabase.html
-CREATE DATABASE kodekloud_roy OWNER kodekloud_roy;
+CREATE DATABASE kodekloud_db10 OWNER kodekloud_joy;
 
 # Update the authentication settings - https://www.postgresql.org/docs/9.2/auth-pg-hba-conf.html
 cd /var/lib/pgsql/data
@@ -38,10 +51,12 @@ vi pg_hba.conf
 # TYPE	DATABASE	USER	ADDRESS	METHOD	
 local 	kodekloud_db6	kodekloud_roy		md5
 
-# Check the connection
+# Reload the service - https://www.postgresql.org/docs/9.2/app-pg-ctl.html
+pg_ctl reload -D /var/lib/pgsql/data -l postgres_log
+
+# Check the connection as root user
 psql # fail
-psql -d kodekloud_db6 # fail
-psql -U kodekloud_roy # fail
-psql -d kodekloud_db6 # fail
-psql -d kodekloud_db6 -U kodekloud_roy # success with correct password
+psql -d kodekloud_db10 # fail
+psql -U kodekloud_joy # fail
+psql -d kodekloud_db10 -U kodekloud_joy # success with correct password
 ```
