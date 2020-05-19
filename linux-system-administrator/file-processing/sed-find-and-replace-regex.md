@@ -1,3 +1,7 @@
+The backup server in the Stratos DC contains several template XML files used by the Nautilus application. These template XML files must however be populated with valid data before it can be used. One of the daily tasks of a system admin working in the xFusionCorp industries, is to apply string and file manipulation commands!
+
+Replace all occurances of the string Text to Maritime on the XML file /root/nautilus.xml located in the backup server.
+
 ```bash
 # Check the architecture map - https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
 
@@ -13,20 +17,21 @@ sudo -s
 cat /etc/*release*
 
 # Change to root home and create a backup
-cd
+cd /root
 cp nautilus.xml nautilus.xml.backup
 
 # Check contents, should be lots of <string>String</String>
-grep 'String' nautilus.xml
+fgrep Text nautilus.xml
 
 # Replace contents in the file using sed regular expression find and replace.
-sed -i -r 's/String/LUSV/g' nautilus.xml
+sed -i -r 's/Text/Maritime/g' nautilus.xml
 
 # Check for old content, should be nothing
-grep 'String' nautilus.xml
+fgrep Text nautilus.xml
 
 # Check for new content, should be lots of <string>LSUV</String>
-grep 'LUSV' nautilus.xml
+fgrep Maritime nautilus.xml
 
 # Delete the backup
 rm nautilus.xml.backup
+```
