@@ -28,7 +28,7 @@ systemctl status httpd
 systemctl enable httpd
 
 # Turn off version numbers - https://www.tecmint.com/hide-apache-web-server-version-information/
-vi /etc/httpd/conf/httpd/conf
+vi /etc/httpd/conf/httpd.conf
 ServerTokens Prod
 ServerSignature Off
 
@@ -41,7 +41,7 @@ curl -v localhost:8080
 curl -v localhost:8080/ecommerce/ # Can see
 
 # Block access - https://www.tecmint.com/disable-apache-directory-listing-htaccess/
-vi /etc/httpd/conf/httpd/conf
+vi /etc/httpd/conf/httpd.conf
 
 <Directory /var/www/html/>
   AllowOverride All # Changed this from None to All
