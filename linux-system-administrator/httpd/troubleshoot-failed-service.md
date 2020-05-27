@@ -1,3 +1,9 @@
+xFusionCorp Industries having some monitoring tools to check the status of every service, applications etc running on the systems. So, the monitoring system acknowledged that Apache service is not running on some of the Nautilus Application Servers in Stratos Datacenter.
+
+
+Identify the faulty Nautilus Application Servers and fix the issue. And also make sure Apache service is up and running on all Nautilus Application Servers, do not try to stop any kind of firewall if already running or change the Apache port.
+
+
 ```bash
 # Check the architecture map - https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
 
