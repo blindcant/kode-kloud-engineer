@@ -1,4 +1,7 @@
-Create a user on stapp01 named siva that doesn't have a $HOME
+System admins team of xFusionCorp Industries has setup a new tool on all app servers, they have a requirement to create a service user account that will be used by that tool. They are done with all apps except App 2 in Stratos Datacente.
+
+
+Create a user named john in App Server 2 without a home directory.
 
 ```bash
 # Check the architecture map - https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
@@ -15,9 +18,9 @@ cat /etc/*release*
 sudo -s
 
 # Create the user without an interactive shell
-useradd --no-create-home siva
+useradd --no-create-home john
 
 # Check our work
-grep 'siva' /etc/passwd # Should exist
+fgrep 'john' /etc/passwd # Should exist
 ll /home # No siva folder here
 ```
