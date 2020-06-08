@@ -17,7 +17,7 @@ sudo -s
 cat /etc/*release*
 
 # Install SELinux
-yum install selinux-policy setroubleshoot-server policycoreutils libselinux setools-console
+yum install selinux-policy setroubleshoot-server policycoreutils libselinux setools-console -y
 
 vi /etc/selinux/config
 # Change SELINUX=enforcing to SELINUX=disabled

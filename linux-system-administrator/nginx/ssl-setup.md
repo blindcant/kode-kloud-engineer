@@ -25,11 +25,11 @@ sudo -s
 
 # Install EPEL - https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-on-centos-7
 # https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-centos-7
-yum install epel-release
+yum install epel-release -y
 
 # Install, enable, and start nginx
 yum install nginx -y
-systemctl enable nginx
+systemctl enable nginx 
 systemctl start nginx
 
 # Check the listening ports
@@ -90,7 +90,7 @@ ss -lntp # Should see 80 and 443
 # Create the index.html path and file
 mkdir -p /usr/share/doc/HTML
 cat > /usr/share/doc/HTML/index.html
-Welcome
+Welcome!
 ^D
 
 # Test locally
