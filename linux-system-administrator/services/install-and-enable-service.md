@@ -36,16 +36,3 @@ systemctl start cups
 # View the service status
 systemctl status cups # Enabled and running
 ```
-
-As per details shared by development team the new application release has some dependencies on back end. There are some packages/services need to be installed on all app servers under Stratos Datacenter. As per requirements please perform below given steps:
-
-
-a. Install squid package on all the application servers.
-
-b. Once installed, make sure it is enabled to start during boot.
-
-```bash
-    1  sudo yum -y install squid
-    2  systemctl enable squid
-    3  systemctl start squid
-```
