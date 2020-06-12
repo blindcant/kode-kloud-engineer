@@ -26,9 +26,14 @@ systemctl start nfs-idmap
 
 # Edit the configuration file - https://www.unixmen.com/setting-nfs-server-client-centos-7/
 vi /etc/exports
-	/code stapp01(rw,sync,no_root_squash,no_all_squash)
-	/code stapp02(rw,sync,no_root_squash,no_all_squash)
-	/code stapp03(rw,sync,no_root_squash,no_all_squash)	
+```
+
+```
+# /etc/exports additions
+/code stapp01(rw,sync,no_root_squash,no_all_squash)
+/code stapp02(rw,sync,no_root_squash,no_all_squash)
+/code stapp03(rw,sync,no_root_squash,no_all_squash)
+```
 
 # Export the network file share
 exportfs -r
@@ -52,5 +57,9 @@ mount -t nfs -o rw ststor01:/code /var/www/data
 
 # Update /etc/fstab for automatic mount
 vi /etc/fstab
-	ststor01:/code 	/var/www/data	 nfs 	rw,sync,no_root_squash,no_all_squash 	0 	0
+```
+
+```
+# /etc/fstab additions
+ststor01:/code 	/var/www/data	 nfs 	rw,sync,no_root_squash,no_all_squash 	0 	0
 ```
