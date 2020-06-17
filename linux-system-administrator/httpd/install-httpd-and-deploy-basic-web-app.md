@@ -23,7 +23,7 @@ ssh-keygen -t ed25519
 ssh-copy-id -i ~/.ssh/id_ed25519 tony@stapp01
 ssh-copy-id -i ~/.ssh/id_ed25519 steve@stapp02
 ssh-copy-id -i ~/.ssh/id_ed25519 banner@stapp03
-ssh-copy-id -i ~/.ssh/id_ed25519 
+ssh-copy-id -i ~/.ssh/id_ed25519 natasha@ststor01
 
 # scp fails on ststor01 because scp isn't installed, so install openssh-clients for scp
 ssh natasha@ststor01
@@ -60,9 +60,15 @@ systemctl status httpd
 yum install -y httpd
 
 # Confiugre apache
-vi etc/httpd/conf/httpd.conf
-# Listen 8080
+vi /etc/httpd/conf/httpd.conf
+```
 
+```
+# Contents updated
+Listen 8080
+```
+
+```bash
 # Start and check httpd is listening on 8080
 systemctl start httpd
 ss -lntp
