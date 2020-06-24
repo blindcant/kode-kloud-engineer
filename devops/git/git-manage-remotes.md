@@ -5,8 +5,8 @@
 
 # Connect to thor jumpbox
 
-# Connect to application servers, logins at https://kodekloudhub.github.io/kodekloud-engineer/docs/projects/nautilus
-ssh steve@stapp02
+# Connect to storage server logins at https://kodekloudhub.github.io/kodekloud-engineer/docs/projects/nautilus
+ssh natasha@ststor01
 
 # Check O/S, it was CentOS 7
 cat /etc/*release*
