@@ -39,7 +39,7 @@ Note: Once you click on FINISH button all currently running/stopped containers w
 # Connect to thor jumpbox
 
 # Connect to application servers, logins at https://kodekloudhub.github.io/kodekloud-engineer/docs/projects/nautilus
-ssh tony@stapp01
+ssh steve@stapp02
 
 # Check O/S, it was CentOS 7
 cat /etc/*release*
@@ -47,34 +47,6 @@ cat /etc/*release*
 # Switch to root
 sudo -s
 
-# Create the DockerFile - https://docs.docker.com/compose/
-cat > /opt/finance/docker-compose.yml
-```
-
-```yaml
-version: '3.3'
-services:
-  php_web:
-    # https://docs.docker.com/config/containers/container-networking/
-    ports:
-      - "3003:80" # host:container
-    volumes:
-      - /var/www/html:/var/www/html # host:container
-    image: php:apache
-  mysql_web:
-    ports:
-      - "3306:3306"
-    volumes:
-      - /var/lib/mysql:/var/lib/mysql
-    image: mariadb:latest
-    # https://hub.docker.com/_/mariadb
-    environment:
-      MYSQL_DATABASE: database_web
-      MYSQL_ROOT_PASSWORD: P@$$word123.
-
-```
-
-```bash
-docker-compose up
-curl localhost:3003 # Saw the contents of the host's /var/www/html/index.php
+# Run the container - https://hub.docker.com/layers/nginx/library/nginx/alpine/images/sha256-2fa12030ffb0224e0b2e17bc4b1f1479e191e2fd65869fc60d09a8efa5b6d879?context=explore
+docker run --name nginx_2 --detach  nginx:alpine
 ```
