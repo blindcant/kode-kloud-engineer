@@ -10,6 +10,7 @@ Note: Please make sure to install puppetserver package only not any other altern
 ```bash
 # Update prompt as it was crappy sh
 PS1='[\u@\h \W] \$ '
+alias l='ls -Ahl --color=auto'
 
 # Add the puppetserver repo - https://puppet.com/docs/puppet/latest/puppet_platform.html#enable_the_puppet_platform_yum
 sudo rpm -U https://yum.puppet.com/puppet6-release-el-7.noarch.rpm
