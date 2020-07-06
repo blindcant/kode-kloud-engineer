@@ -29,7 +29,7 @@ systemctl status docker # Ok
 # Check Docker images
 docker image ls
 
-# Save Docker image to tar file
+# Save Docker image to tar file - https://stackoverflow.com/questions/23935141/how-to-copy-docker-images-from-one-host-to-another-without-using-a-repository
 docker save -o image.tar news:nautilus
 
 # Zip up Docker image to save space
@@ -55,7 +55,7 @@ systemctl status docker # Ok
 # Unzip the file
 gunzip image.tar.gz
 
-# Recreate the Docker image from the tar file
+# Recreate the Docker image from the tar file - https://stackoverflow.com/questions/23935141/how-to-copy-docker-images-from-one-host-to-another-without-using-a-repository
 docker load -i ./image.tar
 
 # Check it was created
