@@ -1,9 +1,13 @@
-One of the Nautilus DevOps team member was working on to test an Ansible playbook on jump host. However he was only able to create the inventory so far and due to some other priorities that came in he has to work on some other tasks. Please pick this task from where he left and complete the same. Below are more details about the task:
+The Nautilus DevOps team has started testing their Ansible playbooks on different servers within the stack. They have placed some playbooks under /home/thor/playbook/ on jump host which they want to test. Some of these playbooks have already been tested on different servers, but now they want to test them on app server 3 in Stratos DC. However, they first need to create an inventory file so that Ansible can connect to the respective app. Below are some requirements:
 
 
-The inventory file /home/thor/ansible/inventory seems to be having some issues please fix the same. The playbook needs to be run on App Server 3 in Stratos DC so inventory file needs to be updated accordingly.
+a. Create an ini type Ansible inventory file /home/thor/playbook/inventory on jump host.
 
-Create a playbook /home/thor/ansible/playbook.yml and add a task to create an empty file /tmp/file.txt on App Server 3.
+b. Add App Server 3 in this inventory along with required variables that are needed to make it work.
+
+c. The inventory hostname of host should be the server name as per wiki, for example stapp01 for app server 1 in Stratos DC.
+
+d. At the end /home/thor/playbook/playbook.yml, playbook should be able to run.
 
 Note: Validation will try to run playbook using command ansible-playbook -i inventory playbook.yml so please make sure playbook works this way, without passing any extra arguments.
 
@@ -18,17 +22,9 @@ Note: Validation will try to run playbook using command ansible-playbook -i inve
 ssh-keygen -t ed25519
 ssh-copy-id -i ~/.ssh/id_ed25519 banner@stapp03
 
-# Change to working directory
-cd ~/ansible
-
-# Inspect inventory, it was for stapp02 and was wrong
-cat inventory
-
-# Get stapp03 ip
-cat /etc/hosts
-
 # Update inventory
-vi inventory
+cd /home/thor/playbook/ 
+cat > inventory
 ```
 
 ```yaml
@@ -50,26 +46,6 @@ stapp03 ansible_host=172.16.238.12 ansible_connection=ssh ansible_user=banner
 # Test inventory
 ansible -i ./inventory all -m ping
 
-# Create playbook
-vi playbook.yml
-```
-
-```yaml
----
-- hosts: all
-
-  tasks:
-    - name: Create empty file.
-      file:
-        path: /tmp/file.txt
-        state: touch
-```
-
-```bash
 # Run playbook
 ansible-playbook -i ./inventory playbook.yml
-
-# Check results
-ssh banner@stapp03
-ll /tmp # Saw file.txt, OK
 ```
