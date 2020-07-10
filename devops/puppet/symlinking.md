@@ -17,6 +17,9 @@ alias l='ls -Ahl --color=auto'
 cat > /etc/puppetlabs/code/environments/production/manifests/ecommerce.pp
 ```
 
+* https://coderwall.com/p/yfnesa/create-a-symlink-in-puppet
+* https://puppet.com/docs/puppet/latest/types/file.html
+
 ```
 # /etc/puppetlabs/code/environments/production/manifests/ecommerce.pp contents added/updated
 class symlink {
