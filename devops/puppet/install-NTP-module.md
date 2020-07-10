@@ -48,6 +48,9 @@ ssh tony@stapp01
 ssh steve@stapp02
 ssh banner@stapp03
 
+# Get root
+sudo -s
+
 # Get configuration changes
 puppet agent -t
 
