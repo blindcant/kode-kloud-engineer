@@ -23,6 +23,7 @@ ssh-keygen -t ed25519
 ssh-copy-id -i ~/.ssh/id_ed25519 banner@stapp03
 
 # Update inventory
+# https://docs.ansible.com/ansible/2.7/user_guide/intro_inventory.html
 cd /home/thor/playbook/ 
 cat > inventory
 ```
