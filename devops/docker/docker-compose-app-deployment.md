@@ -32,21 +32,46 @@ For more details check here: https://hub.docker.com/_/mariadb?tab=description
 
 Note: Once you click on FINISH button all currently running/stopped containers will be destroyed and stack will be deployed again using your compose file.
 
-
 ```bash
 # Check the architecture map - https://www.lucidchart.com/documents/view/58e22de2-c446-4b49-ae0f-db79a3318e97/0_0
 
 # Connect to thor jumpbox
 
 # Connect to application servers, logins at https://kodekloudhub.github.io/kodekloud-engineer/docs/projects/nautilus
-ssh steve@stapp02
-
+ssh tony@stapp01
 # Check O/S, it was CentOS 7
 cat /etc/*release*
 
 # Switch to root
 sudo -s
 
-# Run the container - https://hub.docker.com/layers/nginx/library/nginx/alpine/images/sha256-2fa12030ffb0224e0b2e17bc4b1f1479e191e2fd65869fc60d09a8efa5b6d879?context=explore
-docker run --name nginx_2 --detach  nginx:alpine
+# Create the Docker Compose file - https://docs.docker.com/compose/
+cat > /opt/finance/docker-compose.yml
+```
+
+```yaml
+version: '3.3'
+services:
+  php_web:
+    # https://docs.docker.com/config/containers/container-networking/
+    ports:
+      - "3003:80" # host:container
+    volumes:
+      - /var/www/html:/var/www/html # host:container
+    image: php:apache
+  mysql_web:
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    image: mariadb:latest
+    # https://hub.docker.com/_/mariadb
+    environment:
+      MYSQL_DATABASE: database_web
+      MYSQL_ROOT_PASSWORD: P@$$word123.
+```
+
+```bash
+docker-compose up
+curl localhost:3003 # Saw the contents of the host's /var/www/html/index.php
 ```
