@@ -72,6 +72,9 @@ services:
 ```
 
 ```bash
+# Deploy the container
 docker-compose up
+
+# Test the container
 curl localhost:3003 # Saw the contents of the host's /var/www/html/index.php
 ```

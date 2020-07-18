@@ -27,7 +27,7 @@ cat /opt/docker
 cat > docker-compose.yml
 ```
 
-```
+```yaml
 version: '3.3'
 services:
   httpd-service:
@@ -43,6 +43,9 @@ services:
 ```
 
 ```bash
+# Deploy the container
 docker-compose up
+
+# Test the container
 curl localhost:8089 # Didn't see index1.html but that is okay.
 ```
