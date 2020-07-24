@@ -18,4 +18,10 @@ cat /etc/*release*
 
 # Switch to root
 sudo -s
+
+# Run container
+docker run -d --name nginx_2 nginx:alpine 
+
+# Check container is running
+docker ps -a
 ```
