@@ -31,6 +31,7 @@ cat > playbook.yml
 ---
 - tasks:
   - name: stapp01 block
+    # https://docs.ansible.com/ansible/latest/user_guide/playbooks_blocks.html
     block:
       - name: Touch a file.
         # https://docs.ansible.com/ansible/latest/modules/file_module.html
