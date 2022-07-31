@@ -33,8 +33,8 @@ cat > inventory
 all:
   hosts:
     stapp03:
-  vars:
-    ansible_user: banner
+      ansible_user: banner
+  
     ansible_connection: ssh
 ```
 
